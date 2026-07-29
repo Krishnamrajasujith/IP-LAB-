@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Bus Ticket Booking System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+}
+
+header{
+background:#003366;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+margin-bottom:10px;
+}
+
+nav{
+background:#0059b3;
+padding:12px;
+text-align:center;
+}
+
+nav button{
+padding:10px 18px;
+margin:5px;
+border:none;
+cursor:pointer;
+background:white;
+color:#003366;
+font-weight:bold;
+border-radius:5px;
+}
+
+nav button:hover{
+background:orange;
+color:white;
+}
+
+.page{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+.container{
+width:90%;
+max-width:1000px;
+margin:auto;
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+}
+
+h2{
+text-align:center;
+color:#003366;
+margin-bottom:20px;
+}
+
+h3{
+color:#0059b3;
+margin-top:15px;
+margin-bottom:10px;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid gray;
+border-radius:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+table,th,td{
+border:1px solid black;
+}
+
+th{
+background:#003366;
+color:white;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+}
+
+.btn{
+background:#003366;
+color:white;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+.btn:hover{
+background:#0059b3;
+}
+
+.card{
+background:#f8f8f8;
+padding:15px;
+margin-top:15px;
+border-left:5px solid #003366;
+}
+
+footer{
+background:#003366;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+@media screen and (max-width:768px){
+
+.container{
+width:95%;
+}
+
+nav button{
+display:block;
+width:100%;
+margin:5px 0;
+}
+
+table{
+font-size:12px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>ONLINE BUS TICKET BOOKING SYSTEM</h1>
+
+<p>Search • Book • Cancel • Travel Safely</p>
+
+</header>
+
+<nav>
+
+<button onclick="showPage('home')">Home</button>
+
+<button onclick="showPage('about')">About</button>
+
+<button onclick="showPage('register')">Register</button>
+
+<button onclick="showPage('login')">User Login</button>
+
+<button onclick="showPage('adminlogin')">Admin Login</button>
+
+<button onclick="showPage('contact')">Contact</button>
+
+</nav>
+
+<!-- HOME PAGE -->
+
+<div id="home" class="page active">
+
+<div class="container">
+
+<h2>Welcome to Online Bus Ticket Booking System</h2>
+
+<p>
+
+Book your bus tickets easily from anywhere.
+
+Search buses, check seat availability, reserve seats,
+cancel bookings, and manage your travel online.
+
+</p>
+
+<div class="card">
+
+<h3>Services</h3>
+
+<ul>
+
+<li>Online Bus Search</li>
+
+<li>Seat Availability</li>
+
+<li>Instant Booking</li>
+
+<li>Secure Payment</li>
+
+<li>Booking History</li>
+
+<li>Cancel Ticket</li>
+
+<li>User Dashboard</li>
+
+<li>Admin Dashboard</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Bus Categories</h3>
+
+<table>
+
+<tr>
+
+<th>Category</th>
+<th>Facilities</th>
+<th>Fare Starts From</th>
+
+</tr>
+
+<tr>
+
+<td>Volvo</td>
+<td>AC, Wi-Fi, Charging</td>
+<td>₹850</td>
+
+</tr>
+
+<tr>
+
+<td>Sleeper Coach</td>
+<td>AC, Bed, Blanket</td>
+<td>₹1200</td>
+
+</tr>
+
+<tr>
+
+<td>Semi Sleeper</td>
+<td>Comfort Seats</td>
+<td>₹700</td>
+
+</tr>
+
+<tr>
+
+<td>Luxury Coach</td>
+<td>TV, Snacks, AC</td>
+<td>₹1500</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Popular Routes</h3>
+
+<table>
+
+<tr>
+
+<th>From</th>
+<th>To</th>
+<th>Duration</th>
+
+</tr>
+
+<tr>
+
+<td>Chennai</td>
+<td>Bangalore</td>
+<td>6 Hours</td>
+
+</tr>
+
+<tr>
+
+<td>Chennai</td>
+<td>Coimbatore</td>
+<td>8 Hours</td>
+
+</tr>
+
+<tr>
+
+<td>Madurai</td>
+<td>Trichy</td>
+<td>3 Hours</td>
+
+</tr>
+
+<tr>
+
+<td>Salem</td>
+<td>Hyderabad</td>
+<td>10 Hours</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PART 2 STARTS BELOW -->
+<!-- ================= USER REGISTRATION ================= -->
+
+<div id="register" class="page">
+
+<div class="container">
+
+<h2>User Registration</h2>
+
+<label>Full Name</label>
+<input type="text" id="regName">
+
+<label>Email</label>
+<input type="email" id="regEmail">
+
+<label>Mobile Number</label>
+<input type="text">
+
+<label>Password</label>
+<input type="password" id="regPass">
+
+<label>Confirm Password</label>
+<input type="password">
+
+<button class="btn" onclick="registerUser()">
+Register
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER LOGIN ================= -->
+
+<div id="login" class="page">
+
+<div class="container">
+
+<h2>User Login</h2>
+
+<label>Email</label>
+<input type="email">
+
+<label>Password</label>
+<input type="password">
+
+<button class="btn" onclick="userLogin()">
+Login
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('forgotpassword')">
+Forgot Password
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER DASHBOARD ================= -->
+
+<div id="userdashboard" class="page">
+
+<div class="container">
+
+<h2>User Dashboard</h2>
+
+<button class="btn" onclick="showPage('searchbus')">
+Search Bus
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('bookticket')">
+Book Ticket
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('bookinghistory')">
+Booking History
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('comments')">
+Comments
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= SEARCH BUS ================= -->
+
+<div id="searchbus" class="page">
+
+<div class="container">
+
+<h2>Search Bus</h2>
+
+<label>From</label>
+<input type="text">
+
+<label>To</label>
+<input type="text">
+
+<label>Journey Date</label>
+<input type="date">
+
+<button class="btn" onclick="searchBus()">
+Search Bus
+</button>
+
+<br><br>
+
+<table>
+
+<tr>
+<th>Bus</th>
+<th>Departure</th>
+<th>Arrival</th>
+<th>Fare</th>
+</tr>
+
+<tr>
+<td>Volvo</td>
+<td>08:00 AM</td>
+<td>02:00 PM</td>
+<td>₹850</td>
+</tr>
+
+<tr>
+<td>Sleeper Coach</td>
+<td>09:00 PM</td>
+<td>05:00 AM</td>
+<td>₹1200</td>
+</tr>
+
+<tr>
+<td>Semi Sleeper</td>
+<td>06:00 PM</td>
+<td>12:00 AM</td>
+<td>₹700</td>
+</tr>
+
+</table>
+
+<br>
+
+<h3>Seat Availability</h3>
+
+<table>
+
+<tr>
+
+<th>Seat No</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr><td>A1</td><td>Available</td></tr>
+<tr><td>A2</td><td>Booked</td></tr>
+<tr><td>B1</td><td>Available</td></tr>
+<tr><td>B2</td><td>Available</td></tr>
+<tr><td>C1</td><td>Booked</td></tr>
+<tr><td>C2</td><td>Available</td></tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================= BOOK TICKET ================= -->
+
+<div id="bookticket" class="page">
+
+<div class="container">
+
+<h2>Book Ticket</h2>
+
+<label>Passenger Name</label>
+<input type="text">
+
+<label>Bus Category</label>
+
+<select>
+
+<option>Volvo</option>
+
+<option>Sleeper Coach</option>
+
+<option>Semi Sleeper</option>
+
+<option>Luxury Coach</option>
+
+</select>
+
+<label>Journey Date</label>
+<input type="date">
+
+<label>Select Seat</label>
+
+<select>
+
+<option>A1</option>
+<option>A2</option>
+<option>B1</option>
+<option>B2</option>
+<option>C1</option>
+<option>C2</option>
+
+</select>
+
+<label>Payment Method</label>
+
+<select>
+
+<option>UPI</option>
+
+<option>Debit Card</option>
+
+<option>Credit Card</option>
+
+<option>Net Banking</option>
+
+</select>
+
+<button class="btn" onclick="bookTicket()">
+Book Ticket
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BOOKING HISTORY ================= -->
+
+<div id="bookinghistory" class="page">
+
+<div class="container">
+
+<h2>Booking History</h2>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+
+<th>Route</th>
+
+<th>Seat</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>101</td>
+
+<td>Chennai → Bangalore</td>
+
+<td>A1</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+<tr>
+
+<td>102</td>
+
+<td>Madurai → Trichy</td>
+
+<td>B2</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="cancelTicket()">
+Cancel Ticket
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= COMMENTS ================= -->
+
+<div id="comments" class="page">
+
+<div class="container">
+
+<h2>Post Comments</h2>
+
+<label>Your Comment</label>
+
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="postComment()">
+Post Comment
+</button>
+
+</div>
+
+</div>
+
+<!-- PART 3 STARTS BELOW -->
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div id="adminlogin" class="page">
+
+<div class="container">
+
+<h2>Administrator Login</h2>
+
+<label>Username</label>
+<input type="text">
+
+<label>Password</label>
+<input type="password">
+
+<button class="btn" onclick="adminLogin()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div id="admindashboard" class="page">
+
+<div class="container">
+
+<h2>Administrator Dashboard</h2>
+
+<button class="btn" onclick="showPage('buscategory')">
+Bus Category
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('updatebus')">
+Update Bus Information
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('manageusers')">
+Manage Users
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('news')">
+Manage News
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('reports')">
+Generate Report
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('changepassword')">
+Change Password
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BUS CATEGORY ================= -->
+
+<div id="buscategory" class="page">
+
+<div class="container">
+
+<h2>Bus Category</h2>
+
+<table>
+
+<tr>
+<th>Category</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Volvo</td>
+<td>Luxury AC Bus</td>
+</tr>
+
+<tr>
+<td>Sleeper Coach</td>
+<td>Comfortable Sleeping Berths</td>
+</tr>
+
+<tr>
+<td>Semi Sleeper</td>
+<td>Push Back Seats</td>
+</tr>
+
+<tr>
+<td>Luxury Coach</td>
+<td>Premium Travel</td>
+</tr>
+
+</table>
+
+<br>
+
+<label>Add New Category</label>
+
+<input type="text">
+
+<button class="btn" onclick="addCategory()">
+Add Category
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= UPDATE BUS ================= -->
+
+<div id="updatebus" class="page">
+
+<div class="container">
+
+<h2>Update Bus Information</h2>
+
+<label>Bus Name</label>
+<input type="text">
+
+<label>Bus Type</label>
+
+<select>
+
+<option>Volvo</option>
+<option>Sleeper Coach</option>
+<option>Semi Sleeper</option>
+<option>Luxury Coach</option>
+
+</select>
+
+<label>Bus Number</label>
+<input type="text">
+
+<label>Source</label>
+<input type="text">
+
+<label>Destination</label>
+<input type="text">
+
+<label>Departure Time</label>
+<input type="time">
+
+<label>Arrival Time</label>
+<input type="time">
+
+<label>Total Seats</label>
+<input type="number">
+
+<label>Available Seats</label>
+<input type="number">
+
+<label>Ticket Price (₹)</label>
+<input type="number">
+
+<label>Description</label>
+
+<textarea rows="4"></textarea>
+
+<button class="btn" onclick="updateBus()">
+Update Bus
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= MANAGE USERS ================= -->
+
+<div id="manageusers" class="page">
+
+<div class="container">
+
+<h2>Registered Users</h2>
+
+<table>
+
+<tr>
+
+<th>User ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>1</td>
+<td>Raja</td>
+<td>raja@email.com</td>
+<td>Active</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+<td>Sujith</td>
+<td>sujith@email.com</td>
+<td>Active</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+<td>Arun</td>
+<td>arun@email.com</td>
+<td>Active</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="manageUsers()">
+Update Users
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= NEWS MANAGEMENT ================= -->
+
+<div id="news" class="page">
+
+<div class="container">
+
+<h2>Manage News</h2>
+
+<label>News Title</label>
+
+<input type="text">
+
+<label>News Details</label>
+
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="saveNews()">
+Publish News
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= REPORT GENERATION ================= -->
+
+<div id="reports" class="page">
+
+<div class="container">
+
+<h2>Report Generation</h2>
+
+<table>
+
+<tr>
+
+<th>Total Users</th>
+<th>Total Bookings</th>
+<th>Total Buses</th>
+<th>Total Revenue</th>
+
+</tr>
+
+<tr>
+
+<td>250</td>
+<td>850</td>
+<td>40</td>
+<td>₹8,75,000</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="generateReport()">
+Generate Report
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= CHANGE PASSWORD ================= -->
+
+<div id="changepassword" class="page">
+
+<div class="container">
+
+<h2>Change Password</h2>
+
+<label>Current Password</label>
+
+<input type="password">
+
+<label>New Password</label>
+
+<input type="password">
+
+<label>Confirm Password</label>
+
+<input type="password">
+
+<button class="btn" onclick="changePassword()">
+Update Password
+</button>
+
+</div>
+
+</div>
+
+<!-- PART 4 STARTS BELOW -->
+<!-- ================= ABOUT US ================= -->
+
+<div id="about" class="page">
+
+<div class="container">
+
+<h2>About Us</h2>
+
+<p>
+
+The Online Bus Ticket Booking System provides an easy and secure way to book
+bus tickets online. Users can search buses, select seats, make payments,
+cancel tickets, and view booking history. The system is designed to save time
+and provide a smooth travel booking experience.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= CONTACT US ================= -->
+
+<div id="contact" class="page">
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<label>Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Phone Number</label>
+<input type="text">
+
+<label>Message</label>
+
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="sendMessage()">
+
+Send Message
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= FORGOT PASSWORD ================= -->
+
+<div id="forgotpassword" class="page">
+
+<div class="container">
+
+<h2>Forgot Password</h2>
+
+<label>Email Address</label>
+
+<input type="email">
+
+<button class="btn" onclick="forgotPassword()">
+
+Reset Password
+
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>Online Bus Ticket Booking System</h3>
+
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+<script>
+
+function showPage(pageId){
+
+var pages=document.getElementsByClassName("page");
+
+for(var i=0;i<pages.length;i++){
+
+pages[i].style.display="none";
+
+}
+
+document.getElementById(pageId).style.display="block";
+
+}
+
+function registerUser(){
+
+alert("Registration Successful!");
+
+showPage("login");
+
+}
+
+function userLogin(){
+
+alert("Login Successful!");
+
+showPage("userdashboard");
+
+}
+
+function adminLogin(){
+
+alert("Admin Login Successful!");
+
+showPage("admindashboard");
+
+}
+
+function searchBus(){
+
+alert("Bus Search Completed!");
+
+}
+
+function bookTicket(){
+
+alert("Booking Confirmed!\n\nBooking ID : 101\nBus : Volvo\nSeat : A1\nStatus : Confirmed");
+
+}
+
+function cancelTicket(){
+
+alert("Ticket Cancelled Successfully!");
+
+}
+
+function postComment(){
+
+alert("Comment Posted Successfully!");
+
+}
+
+function addCategory(){
+
+alert("New Bus Category Added!");
+
+}
+
+function updateBus(){
+
+alert("Bus Information Updated!");
+
+}
+
+function manageUsers(){
+
+alert("User Details Updated!");
+
+}
+
+function saveNews(){
+
+alert("News Published Successfully!");
+
+}
+
+function generateReport(){
+
+alert("Report Generated Successfully!");
+
+}
+
+function changePassword(){
+
+alert("Password Changed Successfully!");
+
+}
+
+function forgotPassword(){
+
+alert("Password Reset Link Sent to Your Email!");
+
+}
+
+function sendMessage(){
+
+alert("Thank You! Your Message Has Been Sent.");
+
+}
+
+</script>
+
+</body>
+</html>
