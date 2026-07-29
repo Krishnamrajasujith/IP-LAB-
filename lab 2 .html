@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Room Booking System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin-bottom:10px;
+}
+
+nav{
+    background:#0059b3;
+    text-align:center;
+    padding:12px;
+}
+
+nav button{
+    background:white;
+    color:#003366;
+    border:none;
+    padding:10px 18px;
+    margin:5px;
+    cursor:pointer;
+    font-weight:bold;
+    border-radius:5px;
+}
+
+nav button:hover{
+    background:orange;
+    color:white;
+}
+
+.page{
+    display:none;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h2{
+    color:#003366;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+h3{
+    color:#0059b3;
+    margin-top:20px;
+}
+
+label{
+    font-weight:bold;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table,th,td{
+    border:1px solid black;
+}
+
+th{
+    background:#003366;
+    color:white;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}
+
+.btn{
+    background:#003366;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.btn:hover{
+    background:#0059b3;
+}
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:40px;
+}
+
+.card{
+    background:#f8f8f8;
+    padding:15px;
+    border-left:5px solid #003366;
+    margin-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>HOTEL ROOM BOOKING SYSTEM</h1>
+
+<p>
+Book Rooms | Check Availability | Manage Bookings
+</p>
+
+</header>
+
+<nav>
+
+<button onclick="showPage('home')">Home</button>
+
+<button onclick="showPage('rooms')">Rooms</button>
+
+<button onclick="showPage('register')">Register</button>
+
+<button onclick="showPage('login')">User Login</button>
+
+<button onclick="showPage('adminlogin')">Admin Login</button>
+
+<button onclick="showPage('contact')">Contact</button>
+
+</nav>
+
+<!-- ================= HOME PAGE ================= -->
+
+<div id="home" class="page active">
+
+<div class="container">
+
+<h2>Welcome to Our Hotel</h2>
+
+<p>
+
+Welcome to our Hotel Room Booking System.
+
+You can easily
+
+search rooms,
+
+check room availability,
+
+book rooms,
+
+view booking history,
+
+manage your profile,
+
+and contact customer support.
+
+</p>
+
+<br>
+
+<div class="card">
+
+<h3>Facilities</h3>
+
+<ul>
+
+<li>Free Wi-Fi</li>
+
+<li>Swimming Pool</li>
+
+<li>Restaurant</li>
+
+<li>Parking</li>
+
+<li>24 × 7 Reception</li>
+
+<li>Air Conditioned Rooms</li>
+
+<li>Conference Hall</li>
+
+<li>Gym</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Available Room Types</h3>
+
+<table>
+
+<tr>
+
+<th>Room</th>
+
+<th>Price / Night</th>
+
+<th>Capacity</th>
+
+</tr>
+
+<tr>
+
+<td>Single Room</td>
+
+<td>₹1500</td>
+
+<td>1 Person</td>
+
+</tr>
+
+<tr>
+
+<td>Double Room</td>
+
+<td>₹2500</td>
+
+<td>2 Persons</td>
+
+</tr>
+
+<tr>
+
+<td>Deluxe Room</td>
+
+<td>₹4000</td>
+
+<td>3 Persons</td>
+
+</tr>
+
+<tr>
+
+<td>Suite Room</td>
+
+<td>₹6000</td>
+
+<td>4 Persons</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Why Choose Us?</h3>
+
+<ul>
+
+<li>Affordable Price</li>
+
+<li>Best Customer Service</li>
+
+<li>Secure Booking</li>
+
+<li>Online Payment Support</li>
+
+<li>Easy Cancellation</li>
+
+<li>Best Location</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= ROOM PAGE ================= -->
+
+<div id="rooms" class="page">
+
+<div class="container">
+
+<h2>Room Information</h2>
+
+<table>
+
+<tr>
+
+<th>Room Type</th>
+
+<th>Facilities</th>
+
+<th>Price</th>
+
+</tr>
+
+<tr>
+
+<td>Single</td>
+
+<td>Wi-Fi, TV, AC</td>
+
+<td>₹1500</td>
+
+</tr>
+
+<tr>
+
+<td>Double</td>
+
+<td>Wi-Fi, TV, AC, Balcony</td>
+
+<td>₹2500</td>
+
+</tr>
+
+<tr>
+
+<td>Deluxe</td>
+
+<td>Wi-Fi, TV, AC, Breakfast</td>
+
+<td>₹4000</td>
+
+</tr>
+
+<tr>
+
+<td>Suite</td>
+
+<td>Luxury Facilities</td>
+
+<td>₹6000</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- PART 2 STARTS HERE -->
+<!-- ================= REGISTER PAGE ================= -->
+
+<div id="register" class="page">
+
+<div class="container">
+
+<h2>User Registration</h2>
+
+<label>Full Name</label>
+<input type="text" id="regName">
+
+<label>Email</label>
+<input type="email" id="regEmail">
+
+<label>Phone Number</label>
+<input type="text" id="regPhone">
+
+<label>Password</label>
+<input type="password" id="regPassword">
+
+<label>Confirm Password</label>
+<input type="password" id="regConfirm">
+
+<button class="btn" onclick="registerUser()">Register</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER LOGIN ================= -->
+
+<div id="login" class="page">
+
+<div class="container">
+
+<h2>User Login</h2>
+
+<label>Email</label>
+<input type="email" id="loginEmail">
+
+<label>Password</label>
+<input type="password" id="loginPassword">
+
+<button class="btn" onclick="userLogin()">Login</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER DASHBOARD ================= -->
+
+<div id="userdashboard" class="page">
+
+<div class="container">
+
+<h2>User Dashboard</h2>
+
+<p>Welcome to your dashboard.</p>
+
+<button class="btn" onclick="showPage('availability')">
+Check Room Availability
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('booking')">
+Book Room
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('history')">
+Booking History
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('profile')">
+My Profile
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ROOM AVAILABILITY ================= -->
+
+<div id="availability" class="page">
+
+<div class="container">
+
+<h2>Check Room Availability</h2>
+
+<label>Check In Date</label>
+<input type="date">
+
+<label>Check Out Date</label>
+<input type="date">
+
+<label>Guests</label>
+
+<select>
+
+<option>1 Guest</option>
+
+<option>2 Guests</option>
+
+<option>3 Guests</option>
+
+<option>4 Guests</option>
+
+</select>
+
+<button class="btn" onclick="checkAvailability()">
+Check Availability
+</button>
+
+<br><br>
+
+<table>
+
+<tr>
+
+<th>Room</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>Single Room</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>Double Room</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>Deluxe Room</td>
+
+<td>Limited</td>
+
+</tr>
+
+<tr>
+
+<td>Suite Room</td>
+
+<td>Available</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================= BOOK ROOM ================= -->
+
+<div id="booking" class="page">
+
+<div class="container">
+
+<h2>Book Your Room</h2>
+
+<label>Customer Name</label>
+<input type="text">
+
+<label>Check In</label>
+<input type="date">
+
+<label>Check Out</label>
+<input type="date">
+
+<label>Room Type</label>
+
+<select>
+
+<option>Single Room</option>
+
+<option>Double Room</option>
+
+<option>Deluxe Room</option>
+
+<option>Suite Room</option>
+
+</select>
+
+<label>Guests</label>
+
+<select>
+
+<option>1</option>
+
+<option>2</option>
+
+<option>3</option>
+
+<option>4</option>
+
+</select>
+
+<button class="btn" onclick="bookRoom()">
+Book Now
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BOOKING HISTORY ================= -->
+
+<div id="history" class="page">
+
+<div class="container">
+
+<h2>Booking History</h2>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+
+<th>Room</th>
+
+<th>Check In</th>
+
+<th>Check Out</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>101</td>
+
+<td>Single Room</td>
+
+<td>10-Aug-2026</td>
+
+<td>12-Aug-2026</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+<tr>
+
+<td>102</td>
+
+<td>Deluxe Room</td>
+
+<td>22-Aug-2026</td>
+
+<td>24-Aug-2026</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="modifyBooking()">
+Modify Booking
+</button>
+
+<button class="btn" onclick="cancelBooking()">
+Cancel Booking
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= MY PROFILE ================= -->
+
+<div id="profile" class="page">
+
+<div class="container">
+
+<h2>My Profile</h2>
+
+<label>Name</label>
+<input type="text" value="John Doe">
+
+<label>Email</label>
+<input type="email" value="john@example.com">
+
+<label>Phone</label>
+<input type="text" value="9876543210">
+
+<label>Address</label>
+<textarea rows="4">Chennai</textarea>
+
+<button class="btn">
+Update Profile
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= PART 3 STARTS BELOW ================= -->
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div id="adminlogin" class="page">
+
+<div class="container">
+
+<h2>Administrator Login</h2>
+
+<label>Admin Username</label>
+<input type="text" id="adminUser">
+
+<label>Password</label>
+<input type="password" id="adminPass">
+
+<button class="btn" onclick="adminLogin()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div id="admindashboard" class="page">
+
+<div class="container">
+
+<h2>Administrator Dashboard</h2>
+
+<p><b>Hotel Management Controls</b></p>
+
+<button class="btn" onclick="showPage('roommanagement')">
+Room Management
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('bookingmanagement')">
+Booking Management
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('contentmanagement')">
+Website Content
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ROOM MANAGEMENT ================= -->
+
+<div id="roommanagement" class="page">
+
+<div class="container">
+
+<h2>Room Management</h2>
+
+<table>
+
+<tr>
+<th>Room Type</th>
+<th>Quantity</th>
+<th>Price / Night</th>
+</tr>
+
+<tr>
+<td>Single Room</td>
+<td><input type="number" value="20"></td>
+<td><input type="text" value="1500"></td>
+</tr>
+
+<tr>
+<td>Double Room</td>
+<td><input type="number" value="15"></td>
+<td><input type="text" value="2500"></td>
+</tr>
+
+<tr>
+<td>Deluxe Room</td>
+<td><input type="number" value="10"></td>
+<td><input type="text" value="4000"></td>
+</tr>
+
+<tr>
+<td>Suite Room</td>
+<td><input type="number" value="5"></td>
+<td><input type="text" value="6000"></td>
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="updateRooms()">
+Update Rooms
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BOOKING MANAGEMENT ================= -->
+
+<div id="bookingmanagement" class="page">
+
+<div class="container">
+
+<h2>Booking Management</h2>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+<th>Customer</th>
+<th>Room</th>
+<th>Arrival</th>
+<th>Departure</th>
+
+</tr>
+
+<tr>
+
+<td>101</td>
+<td>John</td>
+<td>Single</td>
+<td>10-Aug-2026</td>
+<td>12-Aug-2026</td>
+
+</tr>
+
+<tr>
+
+<td>102</td>
+<td>David</td>
+<td>Suite</td>
+<td>20-Aug-2026</td>
+<td>24-Aug-2026</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<label>Booking ID</label>
+
+<input type="text">
+
+<label>New Check In Date</label>
+
+<input type="date">
+
+<label>New Check Out Date</label>
+
+<input type="date">
+
+<button class="btn" onclick="modifyBookingAdmin()">
+Modify Booking
+</button>
+
+<button class="btn" onclick="cancelBookingAdmin()">
+Cancel Booking
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= WEBSITE CONTENT MANAGEMENT ================= -->
+
+<div id="contentmanagement" class="page">
+
+<div class="container">
+
+<h2>Website Content Management</h2>
+
+<label>Room Information</label>
+
+<textarea rows="4">
+Luxury rooms with modern facilities.
+</textarea>
+
+<label>About Us</label>
+
+<textarea rows="4">
+Our hotel provides excellent hospitality.
+</textarea>
+
+<label>Contact Information</label>
+
+<textarea rows="4">
+Phone : +91 9876543210
+Email : hotel@example.com
+</textarea>
+
+<label>Customer Service (Q & A)</label>
+
+<textarea rows="4">
+Q : How do I cancel?
+A : Cancel 3 days before arrival.
+</textarea>
+
+<label>Local Travel Guide</label>
+
+<textarea rows="4">
+Nearby Beach
+Museum
+Shopping Mall
+Airport
+Railway Station
+</textarea>
+
+<label>Privacy Policy</label>
+
+<textarea rows="5">
+Customer information is kept secure and confidential.
+</textarea>
+
+<button class="btn" onclick="saveContent()">
+Save Changes
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ABOUT US PAGE ================= -->
+
+<div id="about" class="page">
+
+<div class="container">
+
+<h2>About Us</h2>
+
+<p>
+
+Welcome to our hotel.
+
+We provide luxury rooms,
+24×7 customer support,
+free Wi-Fi,
+restaurant,
+swimming pool,
+conference hall,
+and premium hospitality.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= PART 4 STARTS BELOW ================= -->
+<!-- ================= CONTACT PAGE ================= -->
+
+<div id="contact" class="page">
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<label>Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Phone</label>
+<input type="text">
+
+<label>Message</label>
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="sendMessage()">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= CUSTOMER SERVICE ================= -->
+
+<div id="faq" class="page">
+
+<div class="container">
+
+<h2>Customer Service (Q & A)</h2>
+
+<h3>Q1. How can I book a room?</h3>
+<p>Login to your account and click "Book Room".</p>
+
+<h3>Q2. Can I modify my booking?</h3>
+<p>Yes, up to 3 days before arrival.</p>
+
+<h3>Q3. Can I cancel my booking?</h3>
+<p>Yes, cancellation is allowed before 3 days of arrival.</p>
+
+<h3>Q4. Do you provide free Wi-Fi?</h3>
+<p>Yes, free Wi-Fi is available in all rooms.</p>
+
+</div>
+
+</div>
+
+<!-- ================= TRAVEL GUIDE ================= -->
+
+<div id="travel" class="page">
+
+<div class="container">
+
+<h2>Local Travel Guide</h2>
+
+<ul>
+
+<li>Airport - 12 km</li>
+
+<li>Railway Station - 5 km</li>
+
+<li>Bus Stand - 3 km</li>
+
+<li>Shopping Mall - 2 km</li>
+
+<li>Beach - 4 km</li>
+
+<li>Museum - 6 km</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ================= PRIVACY POLICY ================= -->
+
+<div id="privacy" class="page">
+
+<div class="container">
+
+<h2>Privacy Policy</h2>
+
+<p>
+
+Your personal information is stored securely.
+
+We never share customer information with third parties.
+
+Online payments are processed securely.
+
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>Hotel Room Booking System</h3>
+
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+<script>
+
+function showPage(pageId){
+
+var pages=document.getElementsByClassName("page");
+
+for(var i=0;i<pages.length;i++){
+
+pages[i].style.display="none";
+
+}
+
+document.getElementById(pageId).style.display="block";
+
+}
+
+function registerUser(){
+
+alert("Registration Successful!");
+
+showPage("login");
+
+}
+
+function userLogin(){
+
+alert("Login Successful!");
+
+showPage("userdashboard");
+
+}
+
+function adminLogin(){
+
+alert("Admin Login Successful!");
+
+showPage("admindashboard");
+
+}
+
+function checkAvailability(){
+
+alert("Rooms are available.");
+
+}
+
+function bookRoom(){
+
+alert("Room Booked Successfully!");
+
+}
+
+function modifyBooking(){
+
+alert("Booking Modified Successfully!");
+
+}
+
+function cancelBooking(){
+
+alert("Booking Cancelled Successfully!");
+
+}
+
+function updateRooms(){
+
+alert("Room Details Updated!");
+
+}
+
+function modifyBookingAdmin(){
+
+alert("Booking Modified by Admin!");
+
+}
+
+function cancelBookingAdmin(){
+
+alert("Booking Cancelled by Admin!");
+
+}
+
+function saveContent(){
+
+alert("Website Content Updated!");
+
+}
+
+function sendMessage(){
+
+alert("Thank you! Your message has been sent.");
+
+}
+
+</script>
+
+</body>
+</html>
