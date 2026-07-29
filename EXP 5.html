@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Flight Reservation System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+}
+
+header{
+background:#003366;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+margin-bottom:10px;
+}
+
+nav{
+background:#0059b3;
+padding:12px;
+text-align:center;
+}
+
+nav button{
+padding:10px 18px;
+margin:5px;
+border:none;
+cursor:pointer;
+background:white;
+color:#003366;
+font-weight:bold;
+border-radius:5px;
+}
+
+nav button:hover{
+background:orange;
+color:white;
+}
+
+.page{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+.container{
+width:90%;
+max-width:1000px;
+margin:auto;
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+h2{
+text-align:center;
+color:#003366;
+margin-bottom:20px;
+}
+
+h3{
+color:#0059b3;
+margin-top:15px;
+margin-bottom:10px;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid gray;
+border-radius:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+table,th,td{
+border:1px solid black;
+}
+
+th{
+background:#003366;
+color:white;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+}
+
+.btn{
+background:#003366;
+color:white;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+.btn:hover{
+background:#0059b3;
+}
+
+.card{
+background:#f8f8f8;
+padding:15px;
+margin-top:15px;
+border-left:5px solid #003366;
+}
+
+footer{
+background:#003366;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+@media screen and (max-width:768px){
+
+.container{
+width:95%;
+}
+
+nav button{
+display:block;
+width:100%;
+margin:5px 0;
+}
+
+table{
+font-size:12px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>ONLINE FLIGHT RESERVATION SYSTEM</h1>
+
+<p>Search Flights | Book Tickets | Secure Payment | Travel Anywhere</p>
+
+</header>
+
+<nav>
+
+<button onclick="showPage('home')">Home</button>
+
+<button onclick="showPage('about')">About</button>
+
+<button onclick="showPage('register')">Register</button>
+
+<button onclick="showPage('login')">User Login</button>
+
+<button onclick="showPage('adminlogin')">Admin Login</button>
+
+<button onclick="showPage('contact')">Contact</button>
+
+</nav>
+
+<!-- HOME PAGE -->
+
+<div id="home" class="page active">
+
+<div class="container">
+
+<h2>Welcome to Online Flight Reservation System</h2>
+
+<p>
+
+Book domestic and international flight tickets easily.
+Search flights, choose seats, make secure payments,
+view your bookings, and print your e-ticket.
+
+</p>
+
+<div class="card">
+
+<h3>Services</h3>
+
+<ul>
+
+<li>Search Flights</li>
+
+<li>Real-Time Seat Availability</li>
+
+<li>Online Flight Booking</li>
+
+<li>Secure Payment</li>
+
+<li>Booking History</li>
+
+<li>Print E-Ticket</li>
+
+<li>Cancel Ticket</li>
+
+<li>Admin Dashboard</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Available Flight Classes</h3>
+
+<table>
+
+<tr>
+
+<th>Class</th>
+<th>Facilities</th>
+<th>Starting Fare</th>
+
+</tr>
+
+<tr>
+
+<td>Economy</td>
+<td>Standard Seat, Meals</td>
+<td>₹4,000</td>
+
+</tr>
+
+<tr>
+
+<td>Premium Economy</td>
+<td>Extra Leg Room</td>
+<td>₹6,500</td>
+
+</tr>
+
+<tr>
+
+<td>Business</td>
+<td>Lounge, Premium Meals</td>
+<td>₹12,000</td>
+
+</tr>
+
+<tr>
+
+<td>First Class</td>
+<td>Luxury Cabin, Priority Service</td>
+<td>₹20,000</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h3>Popular Flight Routes</h3>
+
+<table>
+
+<tr>
+
+<th>From</th>
+<th>To</th>
+<th>Duration</th>
+
+</tr>
+
+<tr>
+
+<td>Chennai</td>
+<td>Delhi</td>
+<td>2h 45m</td>
+
+</tr>
+
+<tr>
+
+<td>Chennai</td>
+<td>Mumbai</td>
+<td>2h 10m</td>
+
+</tr>
+
+<tr>
+
+<td>Bangalore</td>
+<td>Kolkata</td>
+<td>2h 40m</td>
+
+</tr>
+
+<tr>
+
+<td>Hyderabad</td>
+<td>Dubai</td>
+<td>4h 15m</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PART 2 STARTS BELOW -->
+<!-- ================= USER REGISTRATION ================= -->
+
+<div id="register" class="page">
+
+<div class="container">
+
+<h2>User Registration</h2>
+
+<label>Full Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Mobile Number</label>
+<input type="text">
+
+<label>Password</label>
+<input type="password">
+
+<label>Confirm Password</label>
+<input type="password">
+
+<button class="btn" onclick="registerUser()">
+Register
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER LOGIN ================= -->
+
+<div id="login" class="page">
+
+<div class="container">
+
+<h2>User Login</h2>
+
+<label>Email</label>
+<input type="email">
+
+<label>Password</label>
+<input type="password">
+
+<button class="btn" onclick="userLogin()">
+Login
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('forgotpassword')">
+Forgot Password
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= FORGOT PASSWORD ================= -->
+
+<div id="forgotpassword" class="page">
+
+<div class="container">
+
+<h2>Forgot Password</h2>
+
+<label>Email Address</label>
+
+<input type="email">
+
+<button class="btn" onclick="forgotPassword()">
+
+Reset Password
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= USER DASHBOARD ================= -->
+
+<div id="userdashboard" class="page">
+
+<div class="container">
+
+<h2>User Dashboard</h2>
+
+<button class="btn" onclick="showPage('searchflight')">
+Search Flight
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('bookticket')">
+Book Ticket
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('payment')">
+Ticket Payment
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('myticket')">
+My Ticket
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('bookingstatus')">
+Booking Status
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('feedback')">
+Customer Feedback
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= SEARCH FLIGHT ================= -->
+
+<div id="searchflight" class="page">
+
+<div class="container">
+
+<h2>Search Flight</h2>
+
+<label>From</label>
+<input type="text">
+
+<label>To</label>
+<input type="text">
+
+<label>Journey Date</label>
+<input type="date">
+
+<label>Class</label>
+
+<select>
+
+<option>Economy</option>
+
+<option>Premium Economy</option>
+
+<option>Business</option>
+
+<option>First Class</option>
+
+</select>
+
+<button class="btn" onclick="searchFlight()">
+
+Search Flight
+
+</button>
+
+<br><br>
+
+<table>
+
+<tr>
+
+<th>Flight</th>
+
+<th>Departure</th>
+
+<th>Arrival</th>
+
+<th>Seats</th>
+
+<th>Fare</th>
+
+</tr>
+
+<tr>
+
+<td>AI101</td>
+
+<td>09:00 AM</td>
+
+<td>11:45 AM</td>
+
+<td>25</td>
+
+<td>₹4,500</td>
+
+</tr>
+
+<tr>
+
+<td>6E205</td>
+
+<td>01:30 PM</td>
+
+<td>04:10 PM</td>
+
+<td>18</td>
+
+<td>₹5,200</td>
+
+</tr>
+
+<tr>
+
+<td>UK450</td>
+
+<td>06:00 PM</td>
+
+<td>08:40 PM</td>
+
+<td>12</td>
+
+<td>₹6,000</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================= BOOK TICKET ================= -->
+
+<div id="bookticket" class="page">
+
+<div class="container">
+
+<h2>Book Flight Ticket</h2>
+
+<label>Passenger Name</label>
+<input type="text">
+
+<label>Flight Number</label>
+
+<select>
+
+<option>AI101</option>
+
+<option>6E205</option>
+
+<option>UK450</option>
+
+</select>
+
+<label>Seat Number</label>
+
+<select>
+
+<option>1A</option>
+
+<option>1B</option>
+
+<option>2A</option>
+
+<option>2B</option>
+
+<option>3A</option>
+
+<option>3B</option>
+
+</select>
+
+<label>Passport / ID Number</label>
+<input type="text">
+
+<button class="btn" onclick="bookTicket()">
+Proceed to Payment
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= TICKET PAYMENT ================= -->
+
+<div id="payment" class="page">
+
+<div class="container">
+
+<h2>Ticket Payment</h2>
+
+<label>Payment Method</label>
+
+<select>
+
+<option>UPI</option>
+
+<option>Debit Card</option>
+
+<option>Credit Card</option>
+
+<option>Net Banking</option>
+
+</select>
+
+<label>Card / UPI ID</label>
+
+<input type="text">
+
+<label>Amount</label>
+
+<input type="text" value="₹4500">
+
+<button class="btn" onclick="paymentSuccess()">
+
+Pay Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= MY TICKET ================= -->
+
+<div id="myticket" class="page">
+
+<div class="container">
+
+<h2>My Ticket</h2>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+
+<th>Flight</th>
+
+<th>Passenger</th>
+
+<th>Seat</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>FL101</td>
+
+<td>AI101</td>
+
+<td>John</td>
+
+<td>2A</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="showPage('printticket')">
+
+Print Ticket
+
+</button>
+
+<button class="btn" onclick="showPage('cancelticket')">
+
+Cancel Ticket
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= PART 3 STARTS BELOW ================= -->
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div id="adminlogin" class="page">
+
+<div class="container">
+
+<h2>Administrator Login</h2>
+
+<label>Username</label>
+<input type="text">
+
+<label>Password</label>
+<input type="password">
+
+<button class="btn" onclick="adminLogin()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div id="admindashboard" class="page">
+
+<div class="container">
+
+<h2>Administrator Dashboard</h2>
+
+<button class="btn" onclick="showPage('flightschedule')">
+Manage Flight Schedule
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('seatinventory')">
+Seat Inventory
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('manageusers')">
+Manage Users
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('adminreport')">
+Admin Report
+</button>
+
+<br><br>
+
+<button class="btn" onclick="showPage('home')">
+Logout
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= MANAGE FLIGHT SCHEDULE ================= -->
+
+<div id="flightschedule" class="page">
+
+<div class="container">
+
+<h2>Manage Flight Schedule</h2>
+
+<label>Flight Number</label>
+<input type="text">
+
+<label>Source</label>
+<input type="text">
+
+<label>Destination</label>
+<input type="text">
+
+<label>Departure Time</label>
+<input type="time">
+
+<label>Arrival Time</label>
+<input type="time">
+
+<label>Fare (₹)</label>
+<input type="number">
+
+<button class="btn" onclick="updateFlight()">
+Update Flight
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= SEAT INVENTORY ================= -->
+
+<div id="seatinventory" class="page">
+
+<div class="container">
+
+<h2>Seat Inventory</h2>
+
+<table>
+
+<tr>
+
+<th>Flight</th>
+
+<th>Total Seats</th>
+
+<th>Available Seats</th>
+
+</tr>
+
+<tr>
+
+<td>AI101</td>
+
+<td>180</td>
+
+<td>35</td>
+
+</tr>
+
+<tr>
+
+<td>6E205</td>
+
+<td>160</td>
+
+<td>20</td>
+
+</tr>
+
+<tr>
+
+<td>UK450</td>
+
+<td>150</td>
+
+<td>15</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="updateSeats()">
+Update Inventory
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= MANAGE USERS ================= -->
+
+<div id="manageusers" class="page">
+
+<div class="container">
+
+<h2>Registered Users</h2>
+
+<table>
+
+<tr>
+
+<th>User ID</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>1</td>
+
+<td>Raja</td>
+
+<td>raja@email.com</td>
+
+<td>Active</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Sujith</td>
+
+<td>sujith@email.com</td>
+
+<td>Active</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+
+<td>Arun</td>
+
+<td>arun@email.com</td>
+
+<td>Active</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="manageUsers()">
+Update Users
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ADMIN REPORT ================= -->
+
+<div id="adminreport" class="page">
+
+<div class="container">
+
+<h2>Admin Report</h2>
+
+<table>
+
+<tr>
+
+<th>Total Flights</th>
+
+<th>Total Bookings</th>
+
+<th>Total Users</th>
+
+<th>Total Revenue</th>
+
+</tr>
+
+<tr>
+
+<td>40</td>
+
+<td>850</td>
+
+<td>500</td>
+
+<td>₹25,50,000</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="generateReport()">
+Generate Report
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= VIEW BOOKING STATUS ================= -->
+
+<div id="bookingstatus" class="page">
+
+<div class="container">
+
+<h2>View Booking Status</h2>
+
+<label>Booking ID</label>
+
+<input type="text">
+
+<button class="btn" onclick="checkStatus()">
+
+Check Status
+
+</button>
+
+<br><br>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+
+<th>Passenger</th>
+
+<th>Flight</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>FL101</td>
+
+<td>John</td>
+
+<td>AI101</td>
+
+<td>Confirmed</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================= PRINT TICKET ================= -->
+
+<div id="printticket" class="page">
+
+<div class="container">
+
+<h2>Print Ticket</h2>
+
+<table>
+
+<tr>
+
+<th>Booking ID</th>
+
+<td>FL101</td>
+
+</tr>
+
+<tr>
+
+<th>Passenger</th>
+
+<td>John</td>
+
+</tr>
+
+<tr>
+
+<th>Flight</th>
+
+<td>AI101</td>
+
+</tr>
+
+<tr>
+
+<th>Seat</th>
+
+<td>2A</td>
+
+</tr>
+
+<tr>
+
+<th>Status</th>
+
+<td>Confirmed</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button class="btn" onclick="printTicket()">
+
+Print Ticket
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= PART 4 STARTS BELOW ================= -->
+<!-- ================= CANCEL TICKET ================= -->
+
+<div id="cancelticket" class="page">
+
+<div class="container">
+
+<h2>Cancel Ticket</h2>
+
+<label>Booking ID</label>
+<input type="text">
+
+<label>Reason for Cancellation</label>
+<textarea rows="4"></textarea>
+
+<button class="btn" onclick="cancelTicket()">
+Cancel Ticket
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= CUSTOMER FEEDBACK ================= -->
+
+<div id="feedback" class="page">
+
+<div class="container">
+
+<h2>Customer Feedback</h2>
+
+<label>Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Rating</label>
+
+<select>
+
+<option>★★★★★ Excellent</option>
+
+<option>★★★★ Very Good</option>
+
+<option>★★★ Good</option>
+
+<option>★★ Average</option>
+
+<option>★ Poor</option>
+
+</select>
+
+<label>Feedback</label>
+
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="submitFeedback()">
+Submit Feedback
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ABOUT US ================= -->
+
+<div id="about" class="page">
+
+<div class="container">
+
+<h2>About Us</h2>
+
+<p>
+
+The Online Flight Reservation System allows passengers to search flights,
+check seat availability, reserve tickets, make secure payments,
+print e-tickets, and manage bookings online.
+
+It provides a fast, secure and user-friendly booking experience.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= CONTACT US ================= -->
+
+<div id="contact" class="page">
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<label>Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Phone Number</label>
+<input type="text">
+
+<label>Message</label>
+
+<textarea rows="5"></textarea>
+
+<button class="btn" onclick="sendMessage()">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>Online Flight Reservation System</h3>
+
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+<script>
+
+function showPage(pageId){
+
+var pages=document.getElementsByClassName("page");
+
+for(var i=0;i<pages.length;i++){
+
+pages[i].style.display="none";
+
+}
+
+document.getElementById(pageId).style.display="block";
+
+}
+
+function registerUser(){
+
+alert("Registration Successful!");
+
+showPage("login");
+
+}
+
+function userLogin(){
+
+alert("Login Successful!");
+
+showPage("userdashboard");
+
+}
+
+function adminLogin(){
+
+alert("Admin Login Successful!");
+
+showPage("admindashboard");
+
+}
+
+function forgotPassword(){
+
+alert("Password Reset Link Sent Successfully!");
+
+}
+
+function searchFlight(){
+
+alert("Flight Search Completed!");
+
+}
+
+function bookTicket(){
+
+alert("Flight Selected Successfully!\nProceed to Payment.");
+
+showPage("payment");
+
+}
+
+function paymentSuccess(){
+
+alert("Payment Successful!\n\nE-Ticket Generated.");
+
+showPage("myticket");
+
+}
+
+function cancelTicket(){
+
+alert("Ticket Cancelled Successfully!");
+
+}
+
+function submitFeedback(){
+
+alert("Thank You for Your Feedback!");
+
+}
+
+function updateFlight(){
+
+alert("Flight Schedule Updated!");
+
+}
+
+function updateSeats(){
+
+alert("Seat Inventory Updated!");
+
+}
+
+function manageUsers(){
+
+alert("User Details Updated!");
+
+}
+
+function generateReport(){
+
+alert("Admin Report Generated!");
+
+}
+
+function checkStatus(){
+
+alert("Booking Status : Confirmed");
+
+}
+
+function printTicket(){
+
+window.print();
+
+}
+
+function sendMessage(){
+
+alert("Your Message Has Been Sent Successfully!");
+
+}
+
+</script>
+
+</body>
+
+</html>
